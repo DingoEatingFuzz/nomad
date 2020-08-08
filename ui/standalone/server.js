@@ -16,6 +16,8 @@ const redirect = async (request, reply) => {
 let index = fs.readFileSync('dist/index.html', 'utf8');
 index = index.replace('[[buildenv]]', encodeURI(JSON.stringify(env)));
 
+fastify.register(require('fastify-cors'), {});
+
 // Static assets
 fastify.register(require('fastify-static'), {
   root: path.join(__dirname, 'dist/assets'),
