@@ -15,6 +15,10 @@ export default class ApplicationAdapter extends RESTAdapter {
   @service system;
   @service token;
 
+  get host() {
+    return this.system.buildEnv.host;
+  }
+
   @computed('token.secret')
   get headers() {
     const token = this.get('token.secret');
