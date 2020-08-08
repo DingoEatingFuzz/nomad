@@ -11,6 +11,13 @@ export default class SystemService extends Service {
   @service token;
   @service store;
 
+  get buildEnv() {
+    const meta = document.head.querySelector('meta[name="buildenv"]');
+    if (!meta) return {};
+
+    return JSON.parse(decodeURI(meta.content));
+  }
+
   @computed('activeRegion')
   get leader() {
     const token = this.token;
