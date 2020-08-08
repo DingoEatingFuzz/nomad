@@ -89,7 +89,9 @@ export default class TokenService extends Service {
     }
 
     // Prepend the host to all API requests
-    if (!url.includes('://') && !url.startsWith('//')) url = this.system.buildEnv.host + url;
+    if (!url.includes('://') && !url.startsWith('//') && this.system.buildEnv.host) {
+      url = this.system.buildEnv.host + url;
+    }
     return fetch(url, assign(options, { headers, credentials }));
   }
 

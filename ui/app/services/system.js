@@ -13,7 +13,7 @@ export default class SystemService extends Service {
 
   get buildEnv() {
     const meta = document.head.querySelector('meta[name="buildenv"]');
-    if (!meta) return {};
+    if (!meta || !meta.content || meta.content === '[[buildenv]]') return {};
 
     return JSON.parse(decodeURI(meta.content));
   }
