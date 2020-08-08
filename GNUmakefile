@@ -403,6 +403,11 @@ ember-dist: ## Build the static UI assets from source
 dev-ui: ember-dist static-assets
 	@$(MAKE) NOMAD_UI_TAG="ui" dev ## Build a dev binary with the UI baked in
 
+.PHONY: standalone-ui
+standalone-ui: ember-dist
+	@cp -r ui/dist ui/standalone
+	@cd ui/standalone && docker build -t nomad-ui-prototype .
+
 HELP_FORMAT="    \033[36m%-25s\033[0m %s\n"
 .PHONY: help
 help: ## Display this usage information
