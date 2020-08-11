@@ -2,6 +2,8 @@ name: Public UI Prototype
 
 on:
   push:
+    branches:
+      - '**'
     tags:
       - '**'
 
@@ -11,6 +13,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Build UI
+        run: make ember-dist
 
       - name: Push docker image
         uses: docker/build-push-action@v1
