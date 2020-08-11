@@ -396,6 +396,10 @@ standalone-ui: ember-dist
 	@cp -r ui/dist ui/standalone
 	@cd ui/standalone && docker build -t nomad-ui-prototype .
 
+.PHONY: standalone-ui-ci
+standalone-ui-ci: ember-dist
+	@cp -r ui/dist ui/standalone
+
 HELP_FORMAT="    \033[36m%-25s\033[0m %s\n"
 .PHONY: help
 help: ## Display this usage information
