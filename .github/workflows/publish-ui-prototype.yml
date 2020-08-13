@@ -26,6 +26,7 @@ jobs:
           username: '${{ secrets.DOCKER_USERNAME }}'
           password: '${{ secrets.DOCKER_PASSWORD }}'
           repository: dingoeatingfuzz/nomad-prototype-ui
+          tags: latest
           tag_with_ref: true
           push: "${{ startsWith(github.ref, 'refs/tags/') }}"
           path: ui/standalone
