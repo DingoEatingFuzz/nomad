@@ -80,7 +80,7 @@ export default class TokenService extends Service {
   // with the guarantee of a token but without the automatic region
   // param since the region cannot be known at this point.
   authorizedRawRequest(url, options = {}) {
-    const credentials = 'include';
+    const credentials = 'same-origin';
     const headers = {};
     const token = this.secret;
 
@@ -88,6 +88,10 @@ export default class TokenService extends Service {
       headers['X-Nomad-Token'] = token;
     }
 
+    // Prepend the host to all API requests
+    if (!url.includes('://') && !url.startsWith('//') && this.system.buildEnv.host) {
+      url = this.system.buildEnv.host + url;
+    }
     return fetch(url, assign(options, { headers, credentials }));
   }
 

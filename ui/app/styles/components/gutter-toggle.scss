@@ -3,14 +3,15 @@
 
   position: absolute;
   left: 0;
-  padding: 1.25rem 0.7rem;
+  top: -7px;
+  padding: 1.45rem 0.5rem;
   z-index: 1; // Make sure the toggle is on top of its siblings
   height: 100%;
   fill: desaturate(lighten($nomad-green, 20%), 30%);
   cursor: pointer;
 
   > svg {
-    width: 15px;
+    width: 10px;
   }
 
   @media #{$mq-hidden-gutter} {

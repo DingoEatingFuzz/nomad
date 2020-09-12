@@ -1,0 +1,32 @@
+name: Public UI Prototype
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Build UI
+        run: make standalone-ui-ci
+
+      - name: Push docker image
+        uses: docker/build-push-action@v1
+        with:
+          username: '${{ secrets.DOCKER_USERNAME }}'
+          password: '${{ secrets.DOCKER_PASSWORD }}'
+          repository: dingoeatingfuzz/nomad-prototype-ui
+          tags: latest
+          tag_with_ref: true
+          push: "${{ startsWith(github.ref, 'refs/tags/') }}"
+          path: ui/standalone
