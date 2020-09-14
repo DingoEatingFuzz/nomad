@@ -21,7 +21,7 @@ Now, if you have feedback or questions, please comment on the [community forum t
 The prototype UI is a docker container that takes a Nomad API address as an environment variable. Run the following after updating the NOMAD_API value to be the address of your cluster:
 
 ```console
-$ docker run -p 6464:6464 --env NOMAD_API=http://localhost:4646 dingoeatingfuzz/nomad-prototype-ui:topo-viz-0.0.0
+$ docker run -p 6464:6464 --env NOMAD_API=http://localhost:4646 dingoeatingfuzz/nomad-prototype-ui:latest
 ```
 
 ## Running the Prototype for Your Team
