@@ -14,7 +14,7 @@ The first program will take place during August and September 2020 and will be f
 
 No need to enroll! All prototype builds will be completely open source and accessible to all. See below for the various ways of running the prototypes.
 
-Now, if you have feedback or questions, please comment on the [community forum thread for the program].
+Now, if you have feedback or questions, please comment on the [community forum thread for the program](https://discuss.hashicorp.com/t/participate-in-the-topology-visualization-prototype-program/14347).
 
 ## Running the Prototype Locally
 
